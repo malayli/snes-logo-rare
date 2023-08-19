@@ -23,6 +23,7 @@
 #define BG1 1
 #define BG2 2
 #define BG3 3
+#define BG4 4
 
 extern char logoPic, logoPic_end;
 extern char logoPalette;
@@ -46,8 +47,8 @@ const u16 logoTileMap[] = {
 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10),
 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 
 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 
-0 | (PAL2<<10), 2 | (PAL2<<10), 4 | (PAL2<<10), 6 | (PAL2<<10), 8 | (PAL2<<10), 10 | (PAL2<<10), 12 | (PAL2<<10), 14 | (PAL2<<10), 16 | (PAL2<<10), 18 | (PAL2<<10), 20 | (PAL2<<10), 22 | (PAL2<<10), 24 | (PAL2<<10), 26 | (PAL2<<10), 28 | (PAL2<<10), 30 | (PAL2<<10), 32 | (PAL2<<10), 34 | (PAL2<<10), 36 | (PAL2<<10), 38 | (PAL2<<10), 40 | (PAL2<<10), 42 | (PAL2<<10), 44 | (PAL2<<10), 46 | (PAL2<<10), 48 | (PAL2<<10), 50 | (PAL2<<10), 52 | (PAL2<<10), 54 | (PAL2<<10), 56 | (PAL2<<10), 58 | (PAL2<<10), 60 | (PAL2<<10), 0 | (PAL2<<10), 
-64 | (PAL2<<10), 66 | (PAL2<<10), 68 | (PAL2<<10), 70 | (PAL2<<10), 72 | (PAL2<<10), 74 | (PAL2<<10), 76 | (PAL2<<10), 78 | (PAL2<<10), 80 | (PAL2<<10), 82 | (PAL2<<10), 84 | (PAL2<<10), 86 | (PAL2<<10), 88 | (PAL2<<10), 90 | (PAL2<<10), 92 | (PAL2<<10), 94 | (PAL2<<10), 96 | (PAL2<<10), 98 | (PAL2<<10), 100 | (PAL2<<10), 102 | (PAL2<<10), 104 | (PAL2<<10), 106 | (PAL2<<10), 108 | (PAL2<<10), 110 | (PAL2<<10), 112 | (PAL2<<10), 114 | (PAL2<<10), 116 | (PAL2<<10), 118 | (PAL2<<10), 120 | (PAL2<<10), 122 | (PAL2<<10), 124 | (PAL2<<10), 0 | (PAL2<<10), 
+00 | (PAL2<<10), 02 | (PAL2<<10), 04 | (PAL2<<10), 06 | (PAL4<<10), 8 | (PAL4<<10), 10 | (PAL4<<10), 12 | (PAL4<<10), 14 | (PAL2<<10), 16 | (PAL2<<10), 18 | (PAL2<<10), 20 | (PAL2<<10), 22 | (PAL2<<10), 24 | (PAL2<<10), 26 | (PAL2<<10), 28 | (PAL2<<10), 30 | (PAL2<<10), 32 | (PAL2<<10), 34 | (PAL2<<10), 36 | (PAL2<<10), 38 | (PAL2<<10), 40 | (PAL2<<10), 42 | (PAL2<<10), 44 | (PAL2<<10), 46 | (PAL2<<10), 48 | (PAL2<<10), 50 | (PAL2<<10), 52 | (PAL2<<10), 54 | (PAL2<<10), 56 | (PAL2<<10), 58 | (PAL2<<10), 60 | (PAL2<<10), 0 | (PAL2<<10), 
+64 | (PAL2<<10), 66 | (PAL2<<10), 68 | (PAL4<<10), 70 | (PAL4<<10), 72 | (PAL4<<10), 74 | (PAL4<<10), 76 | (PAL4<<10), 78 | (PAL4<<10), 80 | (PAL4<<10), 82 | (PAL4<<10), 84 | (PAL4<<10), 86 | (PAL2<<10), 88 | (PAL2<<10), 90 | (PAL2<<10), 92 | (PAL2<<10), 94 | (PAL2<<10), 96 | (PAL2<<10), 98 | (PAL2<<10), 100 | (PAL2<<10), 102 | (PAL2<<10), 104 | (PAL2<<10), 106 | (PAL2<<10), 108 | (PAL2<<10), 110 | (PAL2<<10), 112 | (PAL2<<10), 114 | (PAL2<<10), 116 | (PAL2<<10), 118 | (PAL2<<10), 120 | (PAL2<<10), 122 | (PAL2<<10), 124 | (PAL2<<10), 0 | (PAL2<<10), 
 128 | (PAL2<<10), 130 | (PAL2<<10), 132 | (PAL2<<10), 134 | (PAL2<<10), 136 | (PAL2<<10), 138 | (PAL2<<10), 140 | (PAL2<<10), 142 | (PAL2<<10), 144 | (PAL2<<10), 146 | (PAL2<<10), 148 | (PAL2<<10), 150 | (PAL2<<10), 152 | (PAL2<<10), 154 | (PAL2<<10), 156 | (PAL2<<10), 158 | (PAL2<<10), 160 | (PAL2<<10), 162 | (PAL2<<10), 164 | (PAL2<<10), 166 | (PAL2<<10), 168 | (PAL2<<10), 170 | (PAL2<<10), 172 | (PAL2<<10), 174 | (PAL2<<10), 176 | (PAL2<<10), 178 | (PAL2<<10), 180 | (PAL2<<10), 182 | (PAL2<<10), 184 | (PAL2<<10), 186 | (PAL2<<10), 188 | (PAL2<<10), 0 | (PAL2<<10), 
 192 | (PAL2<<10), 194 | (PAL2<<10), 196 | (PAL2<<10), 198 | (PAL2<<10), 200 | (PAL2<<10), 202 | (PAL2<<10), 204 | (PAL2<<10), 206 | (PAL2<<10), 208 | (PAL2<<10), 210 | (PAL2<<10), 212 | (PAL2<<10), 214 | (PAL2<<10), 216 | (PAL2<<10), 218 | (PAL2<<10), 220 | (PAL2<<10), 222 | (PAL2<<10), 224 | (PAL2<<10), 226 | (PAL2<<10), 228 | (PAL2<<10), 230 | (PAL2<<10), 232 | (PAL2<<10), 234 | (PAL2<<10), 236 | (PAL2<<10), 238 | (PAL2<<10), 240 | (PAL2<<10), 242 | (PAL2<<10), 244 | (PAL2<<10), 246 | (PAL2<<10), 248 | (PAL2<<10), 250 | (PAL2<<10), 252 | (PAL2<<10), 0 | (PAL2<<10), 
 256 | (PAL2<<10), 258 | (PAL2<<10), 260 | (PAL2<<10), 262 | (PAL2<<10), 264 | (PAL2<<10), 266 | (PAL2<<10), 268 | (PAL2<<10), 270 | (PAL2<<10), 272 | (PAL2<<10), 274 | (PAL2<<10), 276 | (PAL2<<10), 278 | (PAL2<<10), 280 | (PAL2<<10), 282 | (PAL2<<10), 284 | (PAL2<<10), 286 | (PAL2<<10), 288 | (PAL2<<10), 290 | (PAL2<<10), 292 | (PAL2<<10), 294 | (PAL2<<10), 296 | (PAL2<<10), 298 | (PAL2<<10), 300 | (PAL2<<10), 302 | (PAL2<<10), 304 | (PAL2<<10), 306 | (PAL2<<10), 308 | (PAL2<<10), 310 | (PAL2<<10), 312 | (PAL2<<10), 314 | (PAL2<<10), 316 | (PAL2<<10), 0 | (PAL2<<10), 
@@ -82,9 +83,6 @@ const u16 logoTileMap[] = {
 /*!\brief Initialize the Rare logo screen in mode 7.
 */
 void initRareLogoMode7() {
-    setBrightness(0); 
-    dmaClearVram(); 
-
     logoState = 0;
     framesCounter = 0;
 
@@ -110,16 +108,16 @@ void initRareLogoMode7() {
     REG_M7X = (sx) >> 8;
     REG_M7Y = (sy) & 255;
     REG_M7Y = (sy) >> 8;
-
-    setBrightness(0xF);
 }
 
-/*!\brief Initialize the Rare logo screen in mode 5.
+/*!\brief Initialize the Rare logo screen.
 */
-void initRareLogoMode5() {
+void initRareLogo() {
     setBrightness(0); 
 
-    bgSetMapPtr(BG0, 0x7400, SC_32x32);
+    initRareLogoMode7();
+
+    // Load the mode 5 logo for loading time optimization
     bgInitTileSet(BG0, 
         &mode5Pic, 
         &mode5Palette, 
@@ -128,26 +126,11 @@ void initRareLogoMode5() {
         32 * 7, 
         BG_16COLORS, 
         0x4000);
-    WaitForVBlank();
-    dmaCopyVram((u8 *)logoTileMap, 0x7400, 32*32*2);
 
-    REG_BGMODE = BG_MODE5;
-	REG_TM = BG1_ENABLE;
-	REG_TS = BG1_ENABLE;
-	REG_NMITIMEN = INT_VBLENABLE | INT_JOYPAD_ENABLE; 
-    
-    bgSetEnable(BG0);
-    bgSetDisable(BG1);
-    bgSetDisable(BG2);
-    bgSetDisable(BG3);
+    // Set the mode 7 logo palette
+    dmaCopyCGram(&logoPalette, PAL0, 32*2);
 
     setBrightness(0xF);
-}
-
-/*!\brief Initialize the Rare logo screen.
-*/
-void initRareLogo() {
-    initRareLogoMode7();
 }
 
 /*!\brief Update Rare logo animation.
@@ -163,7 +146,7 @@ u8 updateRareLogo() {
 
         case 1:
             if (logoScale < 880) {
-                logoScale += 8;
+                logoScale += 16;
 
                 REG_M7A = logoScale; // Set the value in 1st byte
                 REG_M7A = logoScale>>8; // Set the value in 2nd byte
@@ -173,8 +156,17 @@ u8 updateRareLogo() {
 
             } else {
                 logoState = 2;
-                initRareLogoMode5();
+                REG_BGMODE = BG_MODE5;
+                REG_CGWSEL = 0b00000010;
+                REG_TM = 0b00000001;
+                REG_TS = 0b00000001;
+                bgSetMapPtr(BG0, 0x7400, SC_32x32);
+                dmaCopyVram((u8 *)logoTileMap, 0x7400, 32*32*2);
+                dmaCopyCGram(&mode5Palette, PAL0, 32*7);
             }
+            break;
+        
+        case 2:
             break;
     }
 
