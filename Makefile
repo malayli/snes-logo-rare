@@ -27,7 +27,7 @@ all: musics logo $(ROMNAME).sfc
 
 cleanGfxLogo:
 	@echo clean Rare graphics data
-	@rm -f res/*.pic res/*.pal res/*.mp7 res/*.pc7
+	@rm -f res/*.pic res/*.pal res/*.map res/*.mp7 res/*.pc7
 
 clean: cleanBuildRes cleanRom cleanGfx cleanGfxLogo cleanAudio
 
@@ -36,5 +36,9 @@ clean: cleanBuildRes cleanRom cleanGfx cleanGfxLogo cleanAudio
 logo.pc7: res/logo.png
 	@echo convert bitmap ... $(notdir $@)
 	$(GFXCONV) -n -fpng -m7 $<
+	
+mode5.pic: res/mode5.bmp
+	@echo convert font with no tile reduction ... $(notdir $@)
+	$(GFXCONV) -pc16 -n -gs8 -pe0 -fbmp  $<
 
-logo: logo.pc7
+logo: logo.pc7 mode5.pic

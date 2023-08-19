@@ -274,3 +274,6 @@ Execute in Powershell:
 Remove-Item $env:USERPROFILE\AppData\Local\Microsoft\WindowsApps\python*.exe
 
 Disable Python in App execution aliases
+
+## Mode 5
+`Chapter 19. H-512 Mode (BG Mode 5 & 6)` (page 90)

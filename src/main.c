@@ -17,7 +17,9 @@ int main(void) {
 
     dmaClearVram();
 
-    initRareLogo();
+    //initRareLogo();
+    //initRareLogoMode1();
+    initRareLogoMode5();
 
     while (1) {
         if (updateRareLogo() == 1) {
