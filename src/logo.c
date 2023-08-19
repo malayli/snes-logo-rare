@@ -74,13 +74,14 @@ const u16 logoTileMap[] = {
 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10), 0 | (PAL2<<10)
 };
 
-// Macro
+// Macros
 
+#define REG_MISC (*(vuint8 *)0x2133)
 #define vblflip() { spcProcess();    WaitForVBlank(); }
 
-/*!\brief Initialize the Rare logo screen.
+/*!\brief Initialize the Rare logo screen in mode 7.
 */
-void initRareLogo() {
+void initRareLogoMode7() {
     setBrightness(0); 
     dmaClearVram(); 
 
@@ -113,32 +114,8 @@ void initRareLogo() {
     setBrightness(0xF);
 }
 
-#define REG_MISC (*(vuint8 *)0x2133)
-
-void initRareLogoMode1() {
-    setBrightness(0); 
-
-    bgSetMapPtr(BG0, 0x7400, SC_32x32);
-    bgInitTileSet(BG0, 
-        &mode5Pic, 
-        &mode5Palette, 
-        PAL0, 
-        (&mode5Pic_end - &mode5Pic), 
-        32 * 7, 
-        BG_16COLORS, 
-        0x4000);
-    WaitForVBlank();
-    dmaCopyVram((u8 *)logoTileMap, 0x7400, 32*32*2);
-    
-    setMode(BG_MODE1, BG3_MODE1_PRORITY_HIGH);
-    bgSetEnable(BG0);
-    bgSetDisable(BG1);
-    bgSetEnable(BG2);
-    bgSetDisable(BG3);
-
-    setBrightness(0xF);
-}
-
+/*!\brief Initialize the Rare logo screen in mode 5.
+*/
 void initRareLogoMode5() {
     setBrightness(0); 
 
@@ -155,16 +132,22 @@ void initRareLogoMode5() {
     dmaCopyVram((u8 *)logoTileMap, 0x7400, 32*32*2);
 
     REG_BGMODE = BG_MODE5;
-	REG_TM = BG1_ENABLE | BG2_ENABLE | OBJ_ENABLE;
-	REG_TS = BG1_ENABLE | BG2_ENABLE | OBJ_ENABLE;
+	REG_TM = BG1_ENABLE;
+	REG_TS = BG1_ENABLE;
 	REG_NMITIMEN = INT_VBLENABLE | INT_JOYPAD_ENABLE; 
     
     bgSetEnable(BG0);
     bgSetDisable(BG1);
-    bgSetEnable(BG2);
+    bgSetDisable(BG2);
     bgSetDisable(BG3);
 
     setBrightness(0xF);
+}
+
+/*!\brief Initialize the Rare logo screen.
+*/
+void initRareLogo() {
+    initRareLogoMode7();
 }
 
 /*!\brief Update Rare logo animation.
@@ -187,6 +170,10 @@ u8 updateRareLogo() {
 
                 REG_M7D = logoScale; // Set the value in 1st byte
                 REG_M7D = logoScale>>8; // Set the value in 2nd byte
+
+            } else {
+                logoState = 2;
+                initRareLogoMode5();
             }
             break;
     }
