@@ -36,7 +36,7 @@ extern char logoMode7Palette;
 extern char logoMode7TileMap, logoMode7TileMap_end;
 
 extern char logoMode5Pic, logoMode5Pic_end;
-extern char logoMode5Palette;
+extern char logoMode5Palette, logoMode5Palette_end;
 
 // RAM
 
@@ -143,7 +143,7 @@ void initRareLogo() {
         &logoMode5Palette, 
         PAL0, 
         (&logoMode5Pic_end - &logoMode5Pic), 
-        32 * 7, 
+        (&logoMode5Palette_end - &logoMode5Palette), 
         BG_16COLORS, 
         0x4000);
 
