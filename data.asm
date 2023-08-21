@@ -2,27 +2,27 @@
 
 .section ".rodata1" superfree
 
-logoPic:
-.incbin "res/logo.pc7"
-logoPic_end:
+logoMode7Pic:
+.incbin "res/mode7.pc7"
+logoMode7Pic_end:
 
-logoMap:
-.incbin "res/logo.mp7"
-logoMap_end:
+logoMode7TileMap:
+.incbin "res/mode7.mp7"
+logoMode7TileMap_end:
 
-logoPalette:
-.incbin "res/logo.pal"
+logoMode7Palette:
+.incbin "res/mode7.pal"
 
 .ends
 
 .section ".rodata2" superfree
 
-mode5Pic:
+logoMode5Pic:
 .incbin "res/mode5.pic"
-mode5Pic_end:
+logoMode5Pic_end:
 
-mode5Palette:
+logoMode5Palette:
 .incbin "res/mode5.pal"
-mode5Palette_end:
+logoMode5Palette_end:
 
 .ends

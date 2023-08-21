@@ -31,12 +31,12 @@
 #define BG3 3
 #define BG4 4
 
-extern char logoPic, logoPic_end;
-extern char logoPalette;
-extern char logoMap, logoMap_end;
+extern char logoMode7Pic, logoMode7Pic_end;
+extern char logoMode7Palette;
+extern char logoMode7TileMap, logoMode7TileMap_end;
 
-extern char mode5Pic, mode5Pic_end;
-extern char mode5Palette;
+extern char logoMode5Pic, logoMode5Pic_end;
+extern char logoMode5Palette;
 
 // RAM
 
@@ -46,7 +46,7 @@ u16 framesCounter;
 u16 sx;
 u16 sy;
 
-const u16 logoTileMap[] = {
+const u16 logoMode5TileMap[] = {
 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0,
@@ -102,7 +102,12 @@ void initRareLogoMode7() {
     framesCounter = 0;
 
     // Read tiles & map to VRAM  (interlace for mode 7)
-    bgInitMapTileSet7(&logoPic, &logoMap, &logoPalette, (&logoPic_end - &logoPic), 0x0000);
+    bgInitMapTileSet7(
+        &logoMode7Pic, 
+        &logoMode7TileMap, 
+        &logoMode7Palette, 
+        (&logoMode7Pic_end - &logoMode7Pic), 
+        0x0000);
 
     // Now Put mode7 without anything else
     setMode7(0);
@@ -134,16 +139,16 @@ void initRareLogo() {
 
     // Load the mode 5 logo for loading time optimization
     bgInitTileSet(BG0, 
-        &mode5Pic, 
-        &mode5Palette, 
+        &logoMode5Pic, 
+        &logoMode5Palette, 
         PAL0, 
-        (&mode5Pic_end - &mode5Pic), 
+        (&logoMode5Pic_end - &logoMode5Pic), 
         32 * 7, 
         BG_16COLORS, 
         0x4000);
 
     // Set the mode 7 logo palette
-    dmaCopyCGram(&logoPalette, PAL0, 32*2);
+    dmaCopyCGram(&logoMode7Palette, PAL0, 32*2);
 
     setBrightness(0xF);
 }
@@ -176,8 +181,8 @@ u8 updateRareLogo() {
                 REG_TM = 0b00000001;
                 REG_TS = 0b00000001;
                 bgSetMapPtr(BG0, 0x7400, SC_32x32);
-                dmaCopyVram((u8 *)logoTileMap, 0x7400, 32*32*2);
-                dmaCopyCGram(&mode5Palette, PAL0, 32*7);
+                dmaCopyVram((u8 *)logoMode5TileMap, 0x7400, 32*32*2);
+                dmaCopyCGram(&logoMode5Palette, PAL0, 32*7);
             }
             break;
         
