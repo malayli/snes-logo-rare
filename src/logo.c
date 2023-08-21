@@ -187,7 +187,7 @@ u8 updateRareLogo() {
             break;
         
         case 2:
-            break;
+            return 1;
     }
 
     framesCounter++;
