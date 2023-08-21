@@ -147,9 +147,6 @@ void initRareLogo() {
         BG_16COLORS, 
         0x4000);
 
-    // Set the mode 7 logo palette
-    dmaCopyCGram(&logoMode7Palette, PAL0, 32*2);
-
     setBrightness(0xF);
 }
 
@@ -182,7 +179,6 @@ u8 updateRareLogo() {
                 REG_TS = 0b00000001;
                 bgSetMapPtr(BG0, 0x7400, SC_32x32);
                 dmaCopyVram((u8 *)logoMode5TileMap, 0x7400, 32*32*2);
-                dmaCopyCGram(&logoMode5Palette, PAL0, 32*7);
             }
             break;
         
