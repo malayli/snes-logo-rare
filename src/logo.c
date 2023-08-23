@@ -31,20 +31,115 @@
 #define BG3 3
 #define BG4 4
 
+extern char SOUNDBANK__;
+
 extern char logoMode7Pic, logoMode7Pic_end;
-extern char logoMode7Palette;
+extern char logoMode7Palette, logoMode7Palette_end;
 extern char logoMode7TileMap, logoMode7TileMap_end;
 
 extern char logoMode5Pic, logoMode5Pic_end;
 extern char logoMode5Palette, logoMode5Palette_end;
 
-// RAM
+extern char logoMode3Bg1Pic, logoMode3Bg1Pic_end;
+extern char logoMode3Bg1Palette, logoMode3Bg1Palette_end;
 
-u16 logoScale;
-u8 logoState;
-u16 framesCounter;
-u16 sx;
-u16 sy;
+extern char logoMode3Bg2Pic, logoMode3Bg2Pic_end;
+extern char logoMode3Bg2Palette, logoMode3Bg2Palette_end;
+
+const u16 mLogoMode3Bg1Palette[] = {
+    RGB8(0, 0, 0),
+    RGB8(0, 255, 0),
+    RGB8(0, 255, 0),
+    RGB8(0, 255, 0),
+    RGB8(0, 255, 0),
+    RGB8(0, 255, 0),
+    RGB8(0, 255, 0),
+    RGB8(0, 255, 0),
+    RGB8(0, 255, 0),
+    RGB8(0, 255, 0),
+    RGB8(0, 255, 0),
+    RGB8(0, 255, 0),
+    RGB8(0, 255, 0),
+    RGB8(0, 255, 0),
+    RGB8(0, 255, 0),
+    RGB8(0, 115, 0)
+};
+
+const u16 logoMode3Bg1TileMap[] = {
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+
+// Rareware logo
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 00 | TPAL0, 01 | TPAL0, 02 | TPAL0, 03 | TPAL0, 04 | TPAL0, 05 | TPAL0, 06 | TPAL0, 07 | TPAL0, 8 | TPAL0, 9 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 10 | TPAL0, 11 | TPAL0, 12 | TPAL0, 13 | TPAL0, 14 | TPAL0, 15 | TPAL0, 16 | TPAL0, 17 | TPAL0, 18 | TPAL0, 19 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 20 | TPAL0, 21 | TPAL0, 22 | TPAL0, 23 | TPAL0, 24 | TPAL0, 25 | TPAL0, 26 | TPAL0, 27 | TPAL0, 28 | TPAL0, 29 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 30 | TPAL0, 31 | TPAL0, 32 | TPAL0, 33 | TPAL0, 34 | TPAL0, 35 | TPAL0, 36 | TPAL0, 37 | TPAL0, 38 | TPAL0, 39 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 40 | TPAL0, 41 | TPAL0, 42 | TPAL0, 43 | TPAL0, 44 | TPAL0, 45 | TPAL0, 46 | TPAL0, 47 | TPAL0, 48 | TPAL0, 49 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 50 | TPAL0, 51 | TPAL0, 52 | TPAL0, 53 | TPAL0, 54 | TPAL0, 55 | TPAL0, 56 | TPAL0, 57 | TPAL0, 58 | TPAL0, 59 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 60 | TPAL0, 61 | TPAL0, 62 | TPAL0, 63 | TPAL0, 64 | TPAL0, 65 | TPAL0, 66 | TPAL0, 67 | TPAL0, 68 | TPAL0, 69 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 70 | TPAL0, 71 | TPAL0, 72 | TPAL0, 73 | TPAL0, 74 | TPAL0, 75 | TPAL0, 76 | TPAL0, 77 | TPAL0, 78 | TPAL0, 79 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 80 | TPAL0, 81 | TPAL0, 82 | TPAL0, 83 | TPAL0, 84 | TPAL0, 85 | TPAL0, 86 | TPAL0, 87 | TPAL0, 88 | TPAL0, 89 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 90 | TPAL0, 91 | TPAL0, 92 | TPAL0, 93 | TPAL0, 94 | TPAL0, 95 | TPAL0, 96 | TPAL0, 97 | TPAL0, 98 | TPAL0, 99 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 100 | TPAL0, 101 | TPAL0, 102 | TPAL0, 103 | TPAL0, 104 | TPAL0, 105 | TPAL0, 106 | TPAL0, 107 | TPAL0, 108 | TPAL0, 109 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0,  
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 110 | TPAL0, 111 | TPAL0, 112 | TPAL0, 113 | TPAL0, 114 | TPAL0, 115 | TPAL0, 116 | TPAL0, 117 | TPAL0, 118 | TPAL0, 119 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 120 | TPAL0, 121 | TPAL0, 122 | TPAL0, 123 | TPAL0, 124 | TPAL0, 125 | TPAL0, 126 | TPAL0, 127 | TPAL0, 128 | TPAL0, 129 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 130 | TPAL0, 131 | TPAL0, 132 | TPAL0, 133 | TPAL0, 134 | TPAL0, 135 | TPAL0, 136 | TPAL0, 137 | TPAL0, 138 | TPAL0, 139 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0,  
+
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0
+};
+
+const u16 logoMode3Bg2TileMap[] = {
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+
+// Rareware logo
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 00 | TPAL0, 01 | TPAL0, 02 | TPAL0, 03 | TPAL0, 04 | TPAL0, 05 | TPAL0, 06 | TPAL0, 07 | TPAL0, 8 | TPAL0, 9 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 10 | TPAL0, 11 | TPAL1, 12 | TPAL0, 13 | TPAL0, 14 | TPAL0, 15 | TPAL0, 16 | TPAL0, 17 | TPAL0, 18 | TPAL0, 19 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 20 | TPAL1, 21 | TPAL0, 22 | TPAL1, 23 | TPAL1, 24 | TPAL1, 25 | TPAL1, 26 | TPAL1, 27 | TPAL0, 28 | TPAL0, 29 | TPAL1, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 30 | TPAL1, 31 | TPAL0, 32 | TPAL1, 33 | TPAL1, 34 | TPAL1, 35 | TPAL1, 36 | TPAL1, 37 | TPAL1, 38 | TPAL0, 39 | TPAL1, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 40 | TPAL1, 41 | TPAL0, 42 | TPAL1, 43 | TPAL1, 44 | TPAL1, 45 | TPAL1, 46 | TPAL1, 47 | TPAL1, 48 | TPAL0, 49 | TPAL1, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 50 | TPAL0, 51 | TPAL1, 52 | TPAL1, 53 | TPAL1, 54 | TPAL1, 55 | TPAL1, 56 | TPAL1, 57 | TPAL1, 58 | TPAL1, 59 | TPAL1, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 60 | TPAL0, 61 | TPAL1, 62 | TPAL1, 63 | TPAL1, 64 | TPAL1, 65 | TPAL1, 66 | TPAL1, 67 | TPAL1, 68 | TPAL1, 69 | TPAL1, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 70 | TPAL0, 71 | TPAL1, 72 | TPAL1, 73 | TPAL1, 74 | TPAL1, 75 | TPAL1, 76 | TPAL1, 77 | TPAL1, 78 | TPAL1, 79 | TPAL1, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 80 | TPAL0, 81 | TPAL1, 82 | TPAL1, 83 | TPAL1, 84 | TPAL1, 85 | TPAL1, 86 | TPAL1, 87 | TPAL1, 88 | TPAL1, 89 | TPAL1, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 90 | TPAL0, 91 | TPAL1, 92 | TPAL1, 93 | TPAL1, 94 | TPAL1, 95 | TPAL1, 96 | TPAL1, 97 | TPAL1, 98 | TPAL1, 99 | TPAL1, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 100 | TPAL1, 101 | TPAL1, 102 | TPAL1, 103 | TPAL1, 104 | TPAL1, 105 | TPAL1, 106 | TPAL1, 107 | TPAL1, 108 | TPAL1, 109 | TPAL1, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0,  
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 110 | TPAL0, 111 | TPAL1, 112 | TPAL1, 113 | TPAL1, 114 | TPAL1, 115 | TPAL1, 116 | TPAL1, 117 | TPAL1, 118 | TPAL1, 119 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 120 | TPAL0, 121 | TPAL1, 122 | TPAL1, 123 | TPAL1, 124 | TPAL1, 125 | TPAL1, 126 | TPAL1, 127 | TPAL1, 128 | TPAL1, 129 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 130 | TPAL0, 131 | TPAL0, 132 | TPAL0, 133 | TPAL0, 134 | TPAL0, 135 | TPAL0, 136 | TPAL0, 137 | TPAL0, 138 | TPAL0, 139 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0,  
+
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0
+};
 
 const u16 logoMode5TileMap[] = {
 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
@@ -93,26 +188,134 @@ const u16 logoMode5TileMap[] = {
 // Macros
 
 #define REG_MISC (*(vuint8 *)0x2133)
-#define vblflip() { spcProcess();    WaitForVBlank(); }
+
+// RAM
+
+u16 logoScale;
+u8 logoState;
+u16 framesCounter;
+u16 sx;
+u16 sy;
+
+/*!\brief Load the logo music.
+*/
+void initLogoMusic() {
+    spcSetBank(&SOUNDBANK__);
+    spcLoad(MOD_LOGO);
+}
+
+/*!\brief Initialize the Rare logo screen in mode 3.
+*/
+void initRareLogoMode3() {
+    REG_BGMODE = BG_MODE3;
+    REG_CGWSEL = 0b00000010;
+    REG_CGADSUB = 0b00000010;
+    REG_TM = 0b00000010;
+    REG_TS = 0b00000001;
+
+    // Load the mode 3 logo
+    bgSetMapPtr(BG0, 0x7000, SC_32x32);
+    bgSetMapPtr(BG1, 0x7800, SC_32x32);
+
+    bgInitTileSet(BG0, 
+        &logoMode3Bg1Pic, 
+        &logoMode3Bg1Palette, 
+        PAL0, 
+        (&logoMode3Bg1Pic_end - &logoMode3Bg1Pic), 
+        (&logoMode3Bg1Palette_end - &logoMode3Bg1Palette), 
+        BG_256COLORS, 
+        0x4000);
+
+    bgInitTileSet(BG1, 
+        &logoMode3Bg2Pic, 
+        &logoMode3Bg2Palette, 
+        PAL0, 
+        (&logoMode3Bg2Pic_end - &logoMode3Bg2Pic), 
+        (&logoMode3Bg2Palette_end - &logoMode3Bg2Palette), 
+        BG_16COLORS, 
+        0x6000);
+
+    WaitForVBlank();
+
+    dmaCopyVram((u8 *)logoMode3Bg1TileMap, 0x7000, 32*32*2);
+    dmaCopyVram((u8 *)logoMode3Bg2TileMap, 0x7800, 32*32*2);
+
+    // Tilemap addresses
+    // BG1 = 0x7C00
+    // BG2 = 0x7800
+    // BG3 = 0x7000
+
+    // Tileset addresses
+    // BG1 = 0x4000
+    // BG2 = 0x6000
+    // BG3 = 0x3000
+
+    // Animation
+
+    // Starts at Frame 93
+    
+    // Frame 1
+    //
+    // PAL0 = black
+    // PAL1 = black
+    // PAL2 = 132 132 255, 255 255 255, rest is black
+    // PAL3 = black
+    // PAL4 = black
+    // PAL5 = black
+    // PAL6 = black
+    // PAL7 = black
+    //
+    // PAL8 = black
+    // PAL9 = 132 132 255, 255 255 255, rest is black
+    // PAL10 = black
+    // PAL11 = black
+    // PAL12 = black
+    // PAL13 = black
+    // PAL14 = black
+    // PAL15 = black
+    
+    // Frame 2
+    //
+    // PAL0 = black
+    // PAL1 = black
+    //
+    // PAL2 = 0 255 0, 132 132 255, 255 255 255, rest is black
+    // PAL3 = black
+    // PAL4 = black
+    // PAL5 = black
+    // PAL6 = black
+    // PAL7 = black
+    // PAL8 = black
+    //
+    // PAL9 = 0 115 0, 132 132 255, 255 255 255, rest is black
+    // PAL10 = black
+    // PAL11 = black
+    // PAL12 = black
+    // PAL13 = black
+    // PAL14 = black
+    // PAL15 = black
+}
 
 /*!\brief Initialize the Rare logo screen in mode 7.
 */
 void initRareLogoMode7() {
-    logoState = 0;
-    framesCounter = 0;
+    // Tilemap addresses
+    // BG1 = 0x7400
+    // BG2 = 0x7800
+    // BG3 = 0x7000
 
-    // Read tiles & map to VRAM  (interlace for mode 7)
-    bgInitMapTileSet7(
-        &logoMode7Pic, 
-        &logoMode7TileMap, 
-        &logoMode7Palette, 
-        (&logoMode7Pic_end - &logoMode7Pic), 
-        0x0000);
+    // Tileset addresses
+    // BG1 = 0x4000
+    // BG2 = 0x6000
+    // BG3 = 0x3000
 
     // Now Put mode7 without anything else
     setMode7(0);
 
     bgSetScroll(0, 0, 0);
+
+    // Enable large tilemap
+    REG_M7SEL = 0b10000000;
 
     // Set mode 7 map scale
     logoScale = 256;
@@ -133,19 +336,28 @@ void initRareLogoMode7() {
 /*!\brief Initialize the Rare logo screen.
 */
 void initRareLogo() {
+    logoState = 0;
+    framesCounter = 0;
+
     setBrightness(0); 
 
-    initRareLogoMode7();
+    // Load the mode 7 logo tileset for loading time optimization
+    bgInitMapTileSet7(
+        &logoMode7Pic, 
+        &logoMode7TileMap, 
+        &logoMode7Palette, 
+        (&logoMode7Pic_end - &logoMode7Pic), 
+        0x0000);
 
-    // Load the mode 5 logo for loading time optimization
-    bgInitTileSet(BG0, 
-        &logoMode5Pic, 
-        &logoMode5Palette, 
-        PAL0, 
-        (&logoMode5Pic_end - &logoMode5Pic), 
-        (&logoMode5Palette_end - &logoMode5Palette), 
-        BG_16COLORS, 
-        0x4000);
+    initRareLogoMode3();
+
+    WaitForVBlank();
+    initLogoMusic();
+    
+    WaitForVBlank();
+    spcPlay(0);
+    spcProcess();
+    WaitForVBlank();
 
     setBrightness(0xF);
 }
@@ -154,16 +366,23 @@ void initRareLogo() {
     \return 1 when the logo animation is complete, 0 otherwise.
 */
 u8 updateRareLogo() {
+    // Frame 317 : load mode7
+    // Frame 367 : load mode5
+
     switch(logoState) {
         case 0:
-            if (framesCounter == 32) {
+            if (framesCounter == 64) {
                 logoState = 1;
+                initRareLogoMode7();
+                dmaCopyCGram(&logoMode7Palette, PAL0, 32*2);
             }
             break;
 
         case 1:
             if (logoScale < 880) {
-                logoScale += 16;
+                // Mode 7 zoom out
+
+                logoScale += 8;
 
                 REG_M7A = logoScale; // Set the value in 1st byte
                 REG_M7A = logoScale>>8; // Set the value in 2nd byte
@@ -172,23 +391,53 @@ u8 updateRareLogo() {
                 REG_M7D = logoScale>>8; // Set the value in 2nd byte
 
             } else {
+                // Load mode 5 screen
+
+                // Tilemap addresses
+                // BG1 = 0x7400
+                // BG2 = 0x7800
+                // BG3 = 0x7000
+
+                // Tileset addresses
+                // BG1 = 0x4000
+                // BG2 = 0x6000
+                // BG3 = 0x3000
+                
+                // Load the mode 5 logo tileset for loading time optimization
+                bgInitTileSet(BG0, 
+                    &logoMode5Pic, 
+                    &logoMode5Palette, 
+                    PAL0, 
+                    (&logoMode5Pic_end - &logoMode5Pic), 
+                    (&logoMode5Palette_end - &logoMode5Palette), 
+                    BG_16COLORS, 
+                    0x2000);
+
+                WaitForVBlank();
+
                 logoState = 2;
                 REG_BGMODE = BG_MODE5;
-                REG_CGWSEL = 0b00000010;
+                REG_CGWSEL = 0b00000000;
                 REG_TM = 0b00000001;
                 REG_TS = 0b00000001;
+                bgSetGfxPtr(BG0, 0x2000);
                 bgSetMapPtr(BG0, 0x7400, SC_32x32);
                 dmaCopyVram((u8 *)logoMode5TileMap, 0x7400, 32*32*2);
+                dmaCopyCGram(&logoMode5Palette, PAL0, 32*7);
+
+                // Force VBlank
+                REG_INIDISP = 0b00001111;
             }
             break;
         
         case 2:
-            return 1;
+            if (framesCounter == 300) {
+                return 1;
+            }
+            break;
     }
 
     framesCounter++;
-
-    vblflip();
 
     return 0;
 }

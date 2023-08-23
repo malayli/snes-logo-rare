@@ -33,12 +33,20 @@ clean: cleanBuildRes cleanRom cleanGfx cleanGfxLogo cleanAudio
 
 #---------------------------------------------------------------------------------
 
-mode7.pc7: res/mode7.png
-	@echo convert bitmap ... $(notdir $@)
-	$(GFXCONV) -n -fpng -m7 $<
-	
-mode5.pic: res/mode5.bmp
-	@echo convert font with no tile reduction ... $(notdir $@)
+mode3bg1.pic: res/mode3bg1.bmp
+	@echo convert mode3bg1 image ... $(notdir $@)
+	$(GFXCONV) -pc256 -n -gs8 -pe0 -fbmp  $<
+
+mode3bg2.pic: res/mode3bg2.bmp
+	@echo convert mode3bg2 image ... $(notdir $@)
 	$(GFXCONV) -pc16 -n -gs8 -pe0 -fbmp  $<
 
-logo: mode7.pc7 mode5.pic
+mode5.pic: res/mode5.bmp
+	@echo convert mode5 image ... $(notdir $@)
+	$(GFXCONV) -pc16 -n -gs8 -pe0 -fbmp  $<
+
+mode7.pc7: res/mode7.png
+	@echo convert mode7 image ... $(notdir $@)
+	$(GFXCONV) -n -fpng -m7 $<
+
+logo: mode3bg1.pic mode3bg2.pic mode5.pic mode7.pc7

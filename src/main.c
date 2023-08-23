@@ -25,8 +25,9 @@ int main(void) {
             // Paste your game code here
             // consoleNocashMessage("Start your game!");
         }
-
-        // Wait for vblank
+        
+        spcProcess();
+        
         WaitForVBlank();
     }
     return 0;
