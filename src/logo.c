@@ -189,10 +189,18 @@ const u16 logoMode5TileMap[] = {
 
 #define REG_MISC (*(vuint8 *)0x2133)
 
+// Type
+
+typedef enum LogoState {
+    LogoStateMode3 = 0,
+    LogoStateMode7,
+    LogoStateMode5
+} LogoState;
+
 // RAM
 
 u16 logoScale;
-u8 logoState;
+LogoState logoState;
 u16 framesCounter;
 u16 sx;
 u16 sy;
@@ -240,16 +248,6 @@ void initRareLogoMode3() {
 
     dmaCopyVram((u8 *)logoMode3Bg1TileMap, 0x7000, 32*32*2);
     dmaCopyVram((u8 *)logoMode3Bg2TileMap, 0x7800, 32*32*2);
-
-    // Tilemap addresses
-    // BG1 = 0x7C00
-    // BG2 = 0x7800
-    // BG3 = 0x7000
-
-    // Tileset addresses
-    // BG1 = 0x4000
-    // BG2 = 0x6000
-    // BG3 = 0x3000
 
     // Animation
 
@@ -300,16 +298,6 @@ void initRareLogoMode3() {
 /*!\brief Initialize the Rare logo screen in mode 7.
 */
 void initRareLogoMode7() {
-    // Tilemap addresses
-    // BG1 = 0x7400
-    // BG2 = 0x7800
-    // BG3 = 0x7000
-
-    // Tileset addresses
-    // BG1 = 0x4000
-    // BG2 = 0x6000
-    // BG3 = 0x3000
-
     // Now Put mode7 without anything else
     setMode7(0);
 
@@ -337,7 +325,7 @@ void initRareLogoMode7() {
 /*!\brief Initialize the Rare logo screen.
 */
 void initRareLogo() {
-    logoState = 0;
+    logoState = LogoStateMode3;
     framesCounter = 0;
 
     setBrightness(0); 
@@ -381,16 +369,16 @@ u8 updateRareLogo() {
     // Frame 367 : load mode5
 
     switch(logoState) {
-        case 0:
+        case LogoStateMode3:
             if (framesCounter == 64) {
-                logoState = 1;
+                logoState = LogoStateMode7;
                 rarePointer = &logoMode5Pic;
                 initRareLogoMode7();
                 dmaCopyCGram(&logoMode7Palette, PAL0, 32*2);
             }
             break;
 
-        case 1:
+        case LogoStateMode7:
             if (logoScale == 256) {
                 dmaCopyVram(rarePointer, 0x2000, 2048);
 
@@ -425,19 +413,7 @@ u8 updateRareLogo() {
                 REG_M7D = logoScale>>8; // Set the value in 2nd byte
 
             } else {
-                // Load mode 5 screen
-
-                // Tilemap addresses
-                // BG1 = 0x7400
-                // BG2 = 0x7800
-                // BG3 = 0x7000
-
-                // Tileset addresses
-                // BG1 = 0x4000
-                // BG2 = 0x6000
-                // BG3 = 0x3000
-
-                logoState = 2;
+                logoState = LogoStateMode5;
                 REG_BGMODE = BG_MODE5;
                 REG_CGWSEL = 0b00000000;
                 REG_TM = 0b00000001;
@@ -446,13 +422,10 @@ u8 updateRareLogo() {
                 bgSetMapPtr(BG0, 0x7400, SC_32x32);
                 dmaCopyVram((u8 *)logoMode5TileMap, 0x7400, 32*32*2);
                 dmaCopyCGram(&logoMode5Palette, PAL0, 32*7);
-
-                // Force VBlank
-                //REG_INIDISP = 0b00001111;
             }
             break;
         
-        case 2:
+        case LogoStateMode5:
             if (framesCounter == 300) {
                 return 1;
             }
