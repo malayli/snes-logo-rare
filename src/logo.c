@@ -192,7 +192,9 @@ const u16 logoMode5TileMap[] = {
 // Type
 
 typedef enum LogoState {
-    LogoStateMode3 = 0,
+    LogoStateMode3Start = 0,
+    LogoStateMode3Mid,
+    LogoStateMode3End,
     LogoStateMode7,
     LogoStateMode5
 } LogoState;
@@ -217,10 +219,6 @@ void initLogoMusic() {
 */
 void initRareLogoMode3() {
     REG_BGMODE = BG_MODE3;
-    REG_CGWSEL = 0b00000010;
-    REG_CGADSUB = 0b00000010;
-    REG_TM = 0b00000010;
-    REG_TS = 0b00000001;
 
     // Load the mode 3 logo
     bgSetMapPtr(BG0, 0x7000, SC_32x32);
@@ -316,16 +314,16 @@ void initRareLogoMode7() {
     // Set mode 7 map {x,y} position
     sx = 261;
     sy = 215;
-    REG_M7X = (sx) & 255;
-    REG_M7X = (sx) >> 8;
-    REG_M7Y = (sy) & 255;
-    REG_M7Y = (sy) >> 8;
+    REG_M7X = sx & 255;
+    REG_M7X = sx >> 8;
+    REG_M7Y = sy & 255;
+    REG_M7Y = sy >> 8;
 }
 
 /*!\brief Initialize the Rare logo screen.
 */
 void initRareLogo() {
-    logoState = LogoStateMode3;
+    logoState = LogoStateMode3Start;
     framesCounter = 0;
 
     setBrightness(0); 
@@ -338,15 +336,15 @@ void initRareLogo() {
         (&logoMode7Pic_end - &logoMode7Pic), 
         0x0000);
                 
-                // Load the mode 5 logo tileset for loading time optimization
-                bgInitTileSet(BG0, 
-                    &logoMode5Pic, 
-                    &logoMode5Palette, 
-                    PAL0, 
-                    (&logoMode5Pic_end - &logoMode5Pic), 
-                    (&logoMode5Palette_end - &logoMode5Palette), 
-                    BG_16COLORS, 
-                    0x2000);
+    // Load the mode 5 logo tileset for loading time optimization
+    bgInitTileSet(BG0, 
+        &logoMode5Pic, 
+        &logoMode5Palette, 
+        PAL0, 
+        (&logoMode5Pic_end - &logoMode5Pic), 
+        (&logoMode5Palette_end - &logoMode5Palette), 
+        BG_16COLORS, 
+        0x2000);
 
     initRareLogoMode3();
 
@@ -369,8 +367,30 @@ u8 updateRareLogo() {
     // Frame 367 : load mode5
 
     switch(logoState) {
-        case LogoStateMode3:
+        case LogoStateMode3Start:
+            if (framesCounter == 32) {
+                logoState = LogoStateMode3Mid;
+                REG_CGWSEL = 0b00000010;
+                REG_CGADSUB = 0b00000010;
+                REG_TM = 0b00000010;
+                REG_TS = 0b00000001;
+            }
+            break;
+
+        case LogoStateMode3Mid:
             if (framesCounter == 64) {
+                logoState = LogoStateMode3End;
+                REG_CGWSEL = 0b00000000;
+                REG_CGADSUB = 0b00000000;
+                REG_TM = 0b00000010;
+                REG_TS = 0b00000000;
+            }
+            break;
+
+        case LogoStateMode3End:
+            if (framesCounter == 128) {
+                REG_CGWSEL = 0b00000000;
+                REG_CGADSUB = 0b00000000;
                 logoState = LogoStateMode7;
                 rarePointer = &logoMode5Pic;
                 initRareLogoMode7();
@@ -426,7 +446,7 @@ u8 updateRareLogo() {
             break;
         
         case LogoStateMode5:
-            if (framesCounter == 300) {
+            if (framesCounter == 600) {
                 return 1;
             }
             break;
