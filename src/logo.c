@@ -172,7 +172,7 @@ const u16 logoMode5TileMap[] = {
 
 // Rareware logo
 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | (PAL5<<10), 512 | (PAL5<<10), 514 | (PAL5<<10), 516 | (PAL5<<10), 518 | (PAL6<<10), 0 | TPAL0, 0 | TPAL0, 
-0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | (PAL6<<10), 576 | (PAL6<<10), 578 | (PAL6<<10), 580 | (PAL6<<10), 582 | (PAL6<<10), 0 | TPAL0, 0 | TPAL0,
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | (PAL6<<10), 556 | (PAL6<<10), 558 | (PAL6<<10), 560 | (PAL6<<10), 562 | (PAL6<<10), 0 | TPAL0, 0 | TPAL0,
 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | (PAL6<<10), 640 | (PAL6<<10), 642 | (PAL6<<10), 644 | (PAL6<<10), 646 | (PAL6<<10), 0 | TPAL0, 0 | TPAL0,
 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | (PAL6<<10), 520 | (PAL6<<10), 522 | (PAL6<<10), 524 | (PAL6<<10), 526 | (PAL6<<10), 0 | TPAL0, 0 | TPAL0, 
 
@@ -448,7 +448,7 @@ u8 updateRareLogo() {
                 dmaCopyCGram(&logoMode5Palette, PAL0, 32*7);
 
                 // Force VBlank
-                REG_INIDISP = 0b00001111;
+                //REG_INIDISP = 0b00001111;
             }
             break;
         
