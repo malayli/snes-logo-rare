@@ -162,7 +162,7 @@ const u16 logoMode5TileMap[] = {
 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
 
 // Presents
-0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 596 | TPAL2, 598 | TPAL2, 600 | TPAL2, 602 | TPAL2, 604 | TPAL2, 606 | TPAL2, 608 | TPAL2, 610 | TPAL2, 612 | TPAL2, 614 | TPAL2, 616 | TPAL2, 618 | TPAL2, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 564 | TPAL2, 566 | TPAL2, 568 | TPAL2, 570 | TPAL2, 572 | TPAL2, 574 | TPAL2, 686 | TPAL2, 688 | TPAL2, 690 | TPAL2, 692 | TPAL2, 694 | TPAL2, 696 | TPAL2, 0 | TPAL2, 0 | TPAL2, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 660 | TPAL2, 662 | TPAL2, 664 | TPAL2, 666 | TPAL2, 668 | TPAL2, 670 | TPAL2, 672 | TPAL2, 674 | TPAL2, 676 | TPAL2, 678 | TPAL2, 680 | TPAL2, 682 | TPAL2, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
 
 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
@@ -172,9 +172,9 @@ const u16 logoMode5TileMap[] = {
 
 // Rareware logo
 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | (PAL5<<10), 512 | (PAL5<<10), 514 | (PAL5<<10), 516 | (PAL5<<10), 518 | (PAL6<<10), 0 | TPAL0, 0 | TPAL0, 
-0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | (PAL6<<10), 576 | (PAL6<<10), 578 | (PAL6<<10), 580 | (PAL6<<10), 582 | (PAL6<<10), 0 | TPAL0, 0 | TPAL0,
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | (PAL6<<10), 556 | (PAL6<<10), 558 | (PAL6<<10), 560 | (PAL6<<10), 562 | (PAL6<<10), 0 | TPAL0, 0 | TPAL0,
 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | (PAL6<<10), 640 | (PAL6<<10), 642 | (PAL6<<10), 644 | (PAL6<<10), 646 | (PAL6<<10), 0 | TPAL0, 0 | TPAL0,
-0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | (PAL6<<10), 704 | (PAL6<<10), 706 | (PAL6<<10), 708 | (PAL6<<10), 710 | (PAL6<<10), 0 | TPAL0, 0 | TPAL0, 
+0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | (PAL6<<10), 520 | (PAL6<<10), 522 | (PAL6<<10), 524 | (PAL6<<10), 526 | (PAL6<<10), 0 | TPAL0, 0 | TPAL0, 
 
 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 0 | TPAL0, 
@@ -196,6 +196,7 @@ u8 logoState;
 u16 framesCounter;
 u16 sx;
 u16 sy;
+u8 *rarePointer;
 
 /*!\brief Load the logo music.
 */
@@ -348,6 +349,16 @@ void initRareLogo() {
         &logoMode7Palette, 
         (&logoMode7Pic_end - &logoMode7Pic), 
         0x0000);
+                
+                // Load the mode 5 logo tileset for loading time optimization
+                bgInitTileSet(BG0, 
+                    &logoMode5Pic, 
+                    &logoMode5Palette, 
+                    PAL0, 
+                    (&logoMode5Pic_end - &logoMode5Pic), 
+                    (&logoMode5Palette_end - &logoMode5Palette), 
+                    BG_16COLORS, 
+                    0x2000);
 
     initRareLogoMode3();
 
@@ -373,12 +384,35 @@ u8 updateRareLogo() {
         case 0:
             if (framesCounter == 64) {
                 logoState = 1;
+                rarePointer = &logoMode5Pic;
                 initRareLogoMode7();
                 dmaCopyCGram(&logoMode7Palette, PAL0, 32*2);
             }
             break;
 
         case 1:
+            if (logoScale == 256) {
+                dmaCopyVram(rarePointer, 0x2000, 2048);
+
+            } else if (logoScale == 256 + 8) {
+                dmaCopyVram(rarePointer + 4096, 0x2000 + 2048, 2048);
+
+            } else if (logoScale == 256 + (8*2)) {
+                dmaCopyVram(rarePointer + (4096*2), 0x2000 + (2048*2), 2048);
+
+            } else if (logoScale == 256 + (8*3)) {
+                dmaCopyVram(rarePointer + (4096*3), 0x2000 + (2048*3), 2048);
+
+            } else if (logoScale == 256 + (8*4)) {
+                dmaCopyVram(rarePointer + (4096*4), 0x2000 + (2048*4), 2048);
+
+            } else if (logoScale == 256 + (8*5)) {
+                dmaCopyVram(rarePointer + (4096*5), 0x2000 + (2048*5), 2048);
+
+            } else if (logoScale == 256 + (8*6)) {
+                dmaCopyVram(rarePointer + (4096*6), 0x2000 + (2048*6), 2048);
+            }
+
             if (logoScale < 880) {
                 // Mode 7 zoom out
 
@@ -402,18 +436,6 @@ u8 updateRareLogo() {
                 // BG1 = 0x4000
                 // BG2 = 0x6000
                 // BG3 = 0x3000
-                
-                // Load the mode 5 logo tileset for loading time optimization
-                bgInitTileSet(BG0, 
-                    &logoMode5Pic, 
-                    &logoMode5Palette, 
-                    PAL0, 
-                    (&logoMode5Pic_end - &logoMode5Pic), 
-                    (&logoMode5Palette_end - &logoMode5Palette), 
-                    BG_16COLORS, 
-                    0x2000);
-
-                WaitForVBlank();
 
                 logoState = 2;
                 REG_BGMODE = BG_MODE5;
@@ -426,7 +448,7 @@ u8 updateRareLogo() {
                 dmaCopyCGram(&logoMode5Palette, PAL0, 32*7);
 
                 // Force VBlank
-                REG_INIDISP = 0b00001111;
+                //REG_INIDISP = 0b00001111;
             }
             break;
         
