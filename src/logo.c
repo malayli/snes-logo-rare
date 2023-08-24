@@ -335,16 +335,6 @@ void initRareLogo() {
         &logoMode7Palette, 
         (&logoMode7Pic_end - &logoMode7Pic), 
         0x0000);
-                
-    // Load the mode 5 logo tileset for loading time optimization
-    bgInitTileSet(BG0, 
-        &logoMode5Pic, 
-        &logoMode5Palette, 
-        PAL0, 
-        (&logoMode5Pic_end - &logoMode5Pic), 
-        (&logoMode5Palette_end - &logoMode5Palette), 
-        BG_16COLORS, 
-        0x2000);
 
     initRareLogoMode3();
 
@@ -399,26 +389,24 @@ u8 updateRareLogo() {
             break;
 
         case LogoStateMode7:
+            // Copy Mode 5 screen tileset
             if (logoScale == 256) {
-                dmaCopyVram(rarePointer, 0x2000, 2048);
+                dmaCopyVram(rarePointer, 0x2000, 4096);
 
             } else if (logoScale == 256 + 8) {
-                dmaCopyVram(rarePointer + 4096, 0x2000 + 2048, 2048);
+                dmaCopyVram(rarePointer + 4096, 0x2000 + 2048, 4096);
 
             } else if (logoScale == 256 + (8*2)) {
-                dmaCopyVram(rarePointer + (4096*2), 0x2000 + (2048*2), 2048);
+                dmaCopyVram(rarePointer + (4096*2), 0x2000 + (2048*2), 4096);
 
             } else if (logoScale == 256 + (8*3)) {
-                dmaCopyVram(rarePointer + (4096*3), 0x2000 + (2048*3), 2048);
+                dmaCopyVram(rarePointer + (4096*3), 0x2000 + (2048*3), 4096);
 
             } else if (logoScale == 256 + (8*4)) {
-                dmaCopyVram(rarePointer + (4096*4), 0x2000 + (2048*4), 2048);
+                dmaCopyVram(rarePointer + (4096*4), 0x2000 + (2048*4), 4096);
 
             } else if (logoScale == 256 + (8*5)) {
-                dmaCopyVram(rarePointer + (4096*5), 0x2000 + (2048*5), 2048);
-
-            } else if (logoScale == 256 + (8*6)) {
-                dmaCopyVram(rarePointer + (4096*6), 0x2000 + (2048*6), 2048);
+                dmaCopyVram(rarePointer + (4096*5), 0x2000 + (2048*5), 4096);
             }
 
             if (logoScale < 880) {
