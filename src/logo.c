@@ -402,7 +402,6 @@ u8 updateRareLogo() {
                 REG_M7D = logoScale; // Set the value in 1st byte
                 REG_M7D = logoScale>>8; // Set the value in 2nd byte
 
-                
                 // Copy Mode 5 screen tileset
                 if (logoScale <= 304) {
                     dmaCopyVram(rareTilesetPointer, rareAddressPointer, 4096);
