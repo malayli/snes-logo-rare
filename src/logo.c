@@ -391,14 +391,6 @@ u8 updateRareLogo() {
             break;
 
         case LogoStateMode7:
-            // Copy Mode 5 screen tileset
-            if ((logoScale == 256) || (logoScale == 256 + 8) || (logoScale == 256 + (8*2)) 
-            || (logoScale == 256 + (8*3)) || (logoScale == 256 + (8*4)) || (logoScale == 256 + (8*5))) {
-                dmaCopyVram(rareTilesetPointer, rareAddressPointer, 4096);
-                rareTilesetPointer += 4096;
-                rareAddressPointer += 2048;
-            }
-
             if (logoScale < 880) {
                 // Mode 7 zoom out
 
@@ -409,6 +401,14 @@ u8 updateRareLogo() {
 
                 REG_M7D = logoScale; // Set the value in 1st byte
                 REG_M7D = logoScale>>8; // Set the value in 2nd byte
+
+                
+                // Copy Mode 5 screen tileset
+                if (logoScale <= 304) {
+                    dmaCopyVram(rareTilesetPointer, rareAddressPointer, 4096);
+                    rareTilesetPointer += 4096;
+                    rareAddressPointer += 2048;
+                }
 
             } else {
                 logoState = LogoStateMode5;
