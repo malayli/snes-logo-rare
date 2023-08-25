@@ -206,7 +206,8 @@ LogoState logoState;
 u16 framesCounter;
 u16 sx;
 u16 sy;
-u8 *rarePointer;
+u8 *rareTilesetPointer;
+u16 rareAddressPointer;
 
 /*!\brief Load the logo music.
 */
@@ -382,7 +383,8 @@ u8 updateRareLogo() {
                 REG_CGWSEL = 0b00000000;
                 REG_CGADSUB = 0b00000000;
                 logoState = LogoStateMode7;
-                rarePointer = &logoMode5Pic;
+                rareTilesetPointer = &logoMode5Pic;
+                rareAddressPointer = 0x2000;
                 initRareLogoMode7();
                 dmaCopyCGram(&logoMode7Palette, PAL0, 32*2);
             }
@@ -390,23 +392,11 @@ u8 updateRareLogo() {
 
         case LogoStateMode7:
             // Copy Mode 5 screen tileset
-            if (logoScale == 256) {
-                dmaCopyVram(rarePointer, 0x2000, 4096);
-
-            } else if (logoScale == 256 + 8) {
-                dmaCopyVram(rarePointer + 4096, 0x2000 + 2048, 4096);
-
-            } else if (logoScale == 256 + (8*2)) {
-                dmaCopyVram(rarePointer + (4096*2), 0x2000 + (2048*2), 4096);
-
-            } else if (logoScale == 256 + (8*3)) {
-                dmaCopyVram(rarePointer + (4096*3), 0x2000 + (2048*3), 4096);
-
-            } else if (logoScale == 256 + (8*4)) {
-                dmaCopyVram(rarePointer + (4096*4), 0x2000 + (2048*4), 4096);
-
-            } else if (logoScale == 256 + (8*5)) {
-                dmaCopyVram(rarePointer + (4096*5), 0x2000 + (2048*5), 4096);
+            if ((logoScale == 256) || (logoScale == 256 + 8) || (logoScale == 256 + (8*2)) 
+            || (logoScale == 256 + (8*3)) || (logoScale == 256 + (8*4)) || (logoScale == 256 + (8*5))) {
+                dmaCopyVram(rareTilesetPointer, rareAddressPointer, 4096);
+                rareTilesetPointer += 4096;
+                rareAddressPointer += 2048;
             }
 
             if (logoScale < 880) {
